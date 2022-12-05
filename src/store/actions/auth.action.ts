@@ -9,44 +9,46 @@ import {
 import { logoutUserSuccess } from "../reducers/auth.reducer";
 import { parseError } from "../../utils/parseError";
 import {  ME_QUERY } from "../../constants/queries/auth";
-import { ISignUpData, ISignupInputValues } from "./interfaces";
+import { IAuthenticatedUserReturnedData, IAuthenticatedUserInputValues, IConfirmEmailInputValues } from "../models/interfaces";
 
 
-//login user action
-// export const signinUserAction = createAsyncThunk(
-//     "user/login",
-//     async (data, thunkAPI) => {
-//         try {
-//             thunkAPI.dispatch(resetNotifications());
-//             const response = await apiPost(data);
-//             localStorage.setItem("auth-token", response.data.loginUser.token);
-//             return {
-//                 user: response.data.loginUser,
-//                 success: true,
-//             };
-//         } catch (err) {
-//             const error = parseError(err)
-//             thunkAPI.dispatch(setErrorNotification(error));
-//             return thunkAPI.rejectWithValue({
-//                 success: false,
-//             });
-//         }
-//     }
-// );
+
 
 //register user action
 export const signUpUserAction = createAsyncThunk(
     "user/signup",
-    async (data : ISignupInputValues, thunkAPI) => {
+    async (data : IAuthenticatedUserInputValues, thunkAPI) => {
         try {
             thunkAPI.dispatch(resetNotifications({}));
             const response = await apiPost(data);
             return {
-                user: response.data.registerUser as ISignUpData,
+                user: response.data.registerUser as IAuthenticatedUserReturnedData,
                 success: true,
             };
         } catch (err) {
            const error = parseError(err)
+            thunkAPI.dispatch(setErrorNotification(error));
+            return thunkAPI.rejectWithValue({
+                success: false,
+            });
+        }
+    }
+);
+
+//login user action
+export const signinUserAction = createAsyncThunk(
+    "user/login",
+    async (data:IAuthenticatedUserInputValues, thunkAPI) => {
+        try {
+            thunkAPI.dispatch(resetNotifications({}));
+            const response = await apiPost(data);
+            localStorage.setItem("auth-token", response.data.loginUser.token);
+            return {
+                user: response.data.loginUser as IAuthenticatedUserReturnedData,
+                success: true,
+            };
+        } catch (err) {
+            const error = parseError(err)
             thunkAPI.dispatch(setErrorNotification(error));
             return thunkAPI.rejectWithValue({
                 success: false,
@@ -111,45 +113,47 @@ export const signUpUserAction = createAsyncThunk(
 // };
 
 //getcurrent user
-// export const getCurrentUserAction = createAsyncThunk(
-//     "user/current",
-//     async (_data, thunkAPI) => {
-//         try {
-//             thunkAPI.dispatch(resetNotifications());
-//             const response = await apiPost({ query: ME_QUERY });
-//             const { token, ...rest } = response.data.currentUser;
-//             localStorage.setItem("auth-token", token)
-//             return {
-//                 user: rest,
-//                 success: true,
-//             };
-//         } catch (err) {
-//             localStorage.clear()
-//             return {
-//                 success: false
-//             }
-//         }
-//     }
-// );
+export const getCurrentUserAction = createAsyncThunk(
+    "user/current",
+    async (_data, thunkAPI) => {
+        try {
+            thunkAPI.dispatch(resetNotifications({}));
+            const response = await apiPost({ query: ME_QUERY });
+            const { token, ...rest } = response.data.currentUser;
+            localStorage.setItem("auth-token", token)
+            return {
+                user: rest,
+                success: true,
+            };
+        } catch (err) {
+            localStorage.clear()
+            return {
+                success: false
+            }
+        }
+    }
+);
 
-//confirm email
-// export const confirmEmailrAction = createAsyncThunk(
-//     "user/confirm-email",
-//     async (data, thunkAPI) => {
-//         try {
-//             thunkAPI.dispatch(resetNotifications());
-//             const response = await apiPost(data);
-//             thunkAPI.dispatch(setMessageNotification(response.data.resetUsersPassword));
-//             return {
-//                 message: response.data.resetUsersPassword,
-//                 success: true,
-//             };
-//         } catch (err) {
-//             const error = parseError(err)
-//              thunkAPI.dispatch(setErrorNotification(error));
-//             return thunkAPI.rejectWithValue({
-//                 success: false,
-//             });
-//         }
-//     }
-// );
+
+
+// confirm email
+export const confirmEmailAction = createAsyncThunk(
+    "user/confirm-email",
+    async (data:IConfirmEmailInputValues, thunkAPI) => {
+        try {
+            thunkAPI.dispatch(resetNotifications({}));
+            const response = await apiPost(data);
+            thunkAPI.dispatch(setMessageNotification(response.data.resetUsersPassword));
+            return {
+                message: response.data.resetUsersPassword as string,
+                success: true,
+            };
+        } catch (err) {
+            const error = parseError(err)
+             thunkAPI.dispatch(setErrorNotification(error));
+            return thunkAPI.rejectWithValue({
+                success: false,
+            });
+        }
+    }
+);

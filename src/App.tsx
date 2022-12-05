@@ -3,7 +3,8 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import Notifications from "./common/Notification";
 import { shared_routes } from "./setup/routes_manager/SharedRoutes";
 import { useDispatch } from "react-redux";
-import { type } from "os";
+import { LoginForm, SignupForm } from "./pages/auth";
+import { ConfirmEmail } from "./pages/auth/components/confirm-email";
 // import { getCurrentUserAction } from "./store/actions/auth.action";
 
 const App = () => {
@@ -24,7 +25,7 @@ const App = () => {
   type Routes = {
     path: string;
     component: React.ElementType;
-    children: {
+    children?: {
       path: string;
       component: React.ElementType;
     }[];
@@ -33,9 +34,9 @@ const App = () => {
   const renderRoute = ({ path, component: Component, children }: Routes) => {
     return (
       <Route path={path} element={<Component />}>
-        {children?.length > 0 &&
+        {children!.length > 0 &&
           children?.map((route) => {
-            return renderRoute(route);
+            return renderRoute({ path, component: Component, children });
           })}
       </Route>
     );
@@ -45,7 +46,11 @@ const App = () => {
     <div>
       <Notifications />
       <div>
-        <Routes>{shared_routes?.map((route) => renderRoute(route))}</Routes>
+        <Routes>
+          <Route path="/" element={<SignupForm />} />
+          <Route path="/login" element={<LoginForm />} />
+          <Route path="/confirm-email/:authToken" element={<ConfirmEmail />} />
+        </Routes>
       </div>
     </div>
   );

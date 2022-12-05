@@ -19,9 +19,11 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "typeRoots" : ["node_modules/@types", "src/types"]
+    "typeRoots" : ["node_modules/@types", "src/types"],
+    "useUnknownInCatchVariables": false
   },
   "include": [
     "src"
-  ]
+  ],
+  "exclude": ["node_modules"]
 }

@@ -3,19 +3,19 @@ import React, { useEffect, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebook } from "react-icons/fa";
 import { SIGNUP_USER } from "../../../../constants/queries/auth";
-import InputField from "../../../../common/CustomInputField";
+import InputField from "../../../../common/InputField";
 import { Link, useNavigate } from "react-router-dom";
 import { signUpUserAction } from "../../../../store/actions/auth.action";
 import { resetNotifications } from "../../../../store/reducers/error.reducer";
 import { RootState } from "../../../../store";
 import { useAppDispatch, useAppSelector } from "../../../../setup/app-hooks";
-import { IDetails, IInputValues } from "../../interfaces";
-import logo from "../../../assets/images/logo.jpg";
+import { ISignUpQueryString, ISignUpInputValues } from "../../interfaces";
+import logo from "../../../../assets/images/logo.jpg";
 import { SignUpSchema } from "../../validations";
 
 type Props = {};
 
-const SignupForm = () => {
+export const SignupForm = () => {
   const { user, loading } = useAppSelector((state: RootState) => state.auth);
   const { message } = useAppSelector((state: RootState) => state.notifications);
   const [error, setError] = useState("");
@@ -23,14 +23,14 @@ const SignupForm = () => {
   const dispatch = useAppDispatch();
   let navigate = useNavigate();
 
-  const onSubmit = async (values: IInputValues) => {
+  const onSubmit = async (values: ISignUpInputValues) => {
     const inputValues = {
       username: values.username,
       email: values.email,
       password: values.password,
     };
 
-    const details: IDetails = {
+    const details: ISignUpQueryString = {
       query: SIGNUP_USER,
       variables: {
         input: inputValues,
@@ -44,7 +44,7 @@ const SignupForm = () => {
     setError(message!);
     setTimeout(() => {
       setError("");
-    }, 3000);
+    }, 5000);
 
     if (user && user["confirmed"] === true) {
       navigate("/login", { replace: true });
@@ -59,9 +59,9 @@ const SignupForm = () => {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center mt-20 bg-green-400 w-full">
-        <p className="text-2xl text-gray-700">
-          Signing you up. Please chaeck your email to confirm it is you...
+      <div className="flex items-center justify-center mt-20 bg-green-300 max-w-[800px] mx-auto rounded-lg">
+        <p className="text-2xl text-gray-700 w-auto px-4 py-7">
+          Signing you up🚀...Check your email to confirm your registration!
         </p>
       </div>
     );
@@ -192,5 +192,3 @@ const SignupForm = () => {
     </div>
   );
 };
-
-export default SignupForm;

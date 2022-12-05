@@ -1,3 +1,1 @@
-export interface IConstants {
-  name: string;
-}
+export const ENDPOINT = "http://localhost:4000/graphql";

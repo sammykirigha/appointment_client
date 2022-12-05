@@ -1,4 +1,4 @@
-import SignupForm from "../../pages/auth/components/sign-up";
+import { LoginForm, SignupForm } from "../../pages/auth";
 
 interface RouteType {
   path: string;
@@ -11,4 +11,5 @@ interface RouteType {
 
 export const shared_routes: Array<RouteType> = [
   { path: "/", component: SignupForm },
+  { path: "/login", component: LoginForm },
 ];

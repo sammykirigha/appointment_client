@@ -28,3 +28,13 @@ export const validatePassword = (value: any) => {
 
     return error;
   };
+
+  export const SignInSchema = Yup.object().shape({
+    email: Yup.string()
+        .email("invalid email")
+        .required("Email cant be empty"),
+    password: Yup.string()
+        .required("Password cant be empty")
+        .test("len", "Very weak", (val) => val!.length > 4)
+        .test("len", "Weak", (val) => val!.length > 6),
+});
