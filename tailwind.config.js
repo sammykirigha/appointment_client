@@ -10,7 +10,9 @@ module.exports = {
           default: "#396cfo",
         },
       },
-      backgroundImage: {},
+      backgroundImage: {
+        bg: "url('/public/landing_two.jpg')",
+      },
       screens: {
         xs: "380px",
       },

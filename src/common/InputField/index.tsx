@@ -29,7 +29,7 @@ const InputField = (props: InputProps) => {
   return (
     <div className="flex flex-col gap-2">
       <label
-        className="text-lg font-medium after:content-['*'] after:ml-0.5 after:text-red-500"
+        className="text-sm font-medium after:content-['*'] after:ml-0.5 after:text-red-500"
         htmlFor={otherProps.id || otherProps.name}
       >
         {label}

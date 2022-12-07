@@ -10,7 +10,7 @@ const Notification = (props: Props) => {
   );
 
   return (
-    <div className="mt-16">
+    <div className="">
       {error && <div className="bg-red-200 z-50 py-7 text-center">{error}</div>}
 
       {message && (
