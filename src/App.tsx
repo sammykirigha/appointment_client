@@ -3,9 +3,10 @@ import { Route, Routes, useNavigate } from "react-router-dom";
 import Notifications from "./common/Notification";
 import { shared_routes } from "./setup/routes_manager/SharedRoutes";
 import { useDispatch } from "react-redux";
-import { LoginForm, SignupForm } from "./pages/auth";
 import { ConfirmEmail } from "./pages/auth/components/confirm-email";
 import LandingPage from "./pages/landing_page";
+import { LoginPage, SignUpPage } from "./pages/auth";
+import HomePage from "./pages/home";
 // import { getCurrentUserAction } from "./store/actions/auth.action";
 
 const App = () => {
@@ -48,10 +49,10 @@ const App = () => {
       <Notifications />
       <div>
         <Routes>
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/login" element={<LoginForm />} />
+          <Route path="/" element={<LoginPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
           <Route path="/confirm-email/:authToken" element={<ConfirmEmail />} />
-          <Route path="/landing-page" element={<LandingPage />} />
+          <Route path="/home" element={<HomePage />} />
         </Routes>
       </div>
     </div>

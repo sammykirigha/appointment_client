@@ -1,7 +1,7 @@
-import {SignupForm} from "./components/sign-up";
-import {LoginForm} from "./components/sign-in"
+import {SignUpPage} from "./components/sign-up";
+import {LoginPage} from "./components/sign-in"
 
 export {
-    SignupForm,
-    LoginForm
+    SignUpPage,
+    LoginPage
 }
