@@ -9,16 +9,18 @@ import {
 } from "formik";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
-type InputProps = {
+interface ISearchInputProps
+  extends React.InputHTMLAttributes<HTMLInputElement> {
+  validate?: (value: any) => FieldValidator;
+  label: string;
+}
+interface InterfaceProps {
   label: string;
   type?: string;
   validate?: (value: any) => FieldValidator;
-} & FieldAttributes<{}>;
+}
 
-// interface MyInputProps extends FieldInputProps<""> {
-// label: string,
-//  type?: string
-// }
+type InputProps = InterfaceProps & FieldAttributes<{}>;
 
 const InputField = (props: InputProps) => {
   const { label, validate, type = "text", ...otherProps } = props;

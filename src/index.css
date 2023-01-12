@@ -12,7 +12,7 @@
 
 @layer components {
      .btn {
-        @apply inline-block px-5 py-3 rounded-lg shadow-lg
+        @apply inline-block px-5 py-2 rounded-lg shadow-lg
          bg-blue-500 hover:bg-blue-400 hover:-translate-y-0.5
          focus:outline-none focus:ring focus:ring-offset-2 focus:ring-blue-500 
          focus:ring-opacity-50 active:bg-blue-500 transform transition
@@ -20,7 +20,7 @@
     }
 
     .button {
-        @apply px-4 py-2 font-medium tracking-wide rounded-md shadow-sm;
+        @apply px-7 py-2 flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-[1.1rem] rounded-full border-[2px] border-white;
     }
 
     .button--action {

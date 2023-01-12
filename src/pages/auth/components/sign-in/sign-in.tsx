@@ -48,7 +48,7 @@ export const LoginForm = (props: Props) => {
     }, 3000);
 
     if (user?.["role"] === "user") {
-      navigate("/landing-page", { replace: true });
+      navigate("/home", { replace: true });
     }
     if (user?.["role"] === "doctor") {
       navigate("/doctor", { replace: true });

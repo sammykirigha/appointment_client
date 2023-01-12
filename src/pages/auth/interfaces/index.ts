@@ -3,6 +3,11 @@ export interface InputValues {
     password: string
 }
 
+export interface IResetPasswordInputValues {
+    token: string,
+    newPassword: string
+}
+
 export interface ISignUpInputValues extends InputValues{
     username: string
 }
@@ -28,6 +33,17 @@ export interface ISignInQueryString {
         input : {
             email: string,
             password: string 
+        }
+       
+    }
+}
+
+export interface IResetPasswordQueryString {
+    query: string,
+    variables: {
+        input : {
+            token?: string
+            newPassword: string,
         }
        
     }

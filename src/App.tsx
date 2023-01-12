@@ -1,28 +1,30 @@
 import { useEffect } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Notifications from "./common/Notification";
-import { shared_routes } from "./setup/routes_manager/SharedRoutes";
-import { useDispatch } from "react-redux";
 import { ConfirmEmail } from "./pages/auth/components/confirm-email";
-import LandingPage from "./pages/landing_page";
 import { LoginPage, SignUpPage } from "./pages/auth";
 import HomePage from "./pages/home";
+import ResetPassword from "./pages/auth/components/resetpassword";
+import ForgotPassword from "./pages/auth/components/forgot-password";
+import { getCurrentUserAction } from "./store/actions/auth.action";
+import { useAppDispatch } from "./setup/app-hooks";
+import AddPatient from "./pages/patients/components/add_patient";
 // import { getCurrentUserAction } from "./store/actions/auth.action";
 
 const App = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //     const getUser = async () => {
-  //         const { payload } = await dispatch(getCurrentUserAction());
-  //         if (!payload.success) navigate("/login", { replace: true });
-  //     };
+  useEffect(() => {
+    const getUser = async () => {
+      const res: any = await dispatch(getCurrentUserAction());
+      if (!res.payload.success) navigate("/", { replace: true });
+    };
 
-  //     if (!!localStorage.getItem("auth-token")) {
-  //         getUser();
-  //     }
-  // }, [dispatch, navigate]);
+    if (!!localStorage.getItem("auth-token")) {
+      getUser();
+    }
+  }, [dispatch, navigate]);
 
   type Routes = {
     path: string;
@@ -52,7 +54,13 @@ const App = () => {
           <Route path="/" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
           <Route path="/confirm-email/:authToken" element={<ConfirmEmail />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route
+            path="reset-password/:resetToken"
+            element={<ResetPassword />}
+          />
           <Route path="/home" element={<HomePage />} />
+          <Route path="add-patient" element={<AddPatient />} />
         </Routes>
       </div>
     </div>
