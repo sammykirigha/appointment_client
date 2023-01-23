@@ -16,7 +16,7 @@ interface ISearchInputProps
 }
 interface InterfaceProps {
   label: string;
-  type?: string;
+  type?: string | number;
   validate?: (value: any) => FieldValidator;
 }
 

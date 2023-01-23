@@ -22,6 +22,9 @@ export const apiPost = async (data = {}) => {
     return res.data;
   } catch (error) {
     throw error;
+    console.log("====================================");
+    console.log("an error has occured");
+    console.log("====================================");
   }
 };
 

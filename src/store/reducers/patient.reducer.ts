@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createNewPatientAccountAction } from "../actions/patient.action";
+import { createNewPatientAccountAction, fetchSinglePatientAction } from "../actions/patient.action";
 import { ICreatePatientReturnedData } from "../models/interfaces";
 
 interface InitialState {
@@ -25,10 +25,10 @@ export const createPatientAccountdSlice = createSlice({
             state.loading = true;
             state.patient = null;
         });
-        // builder.addCase(fetchSinglePatientAction.pending, (state, action) => {
-        //     state.loading = true;
-        //     state.patient = null;
-        // });
+        builder.addCase(fetchSinglePatientAction.pending, (state, action) => {
+            state.loading = true;
+            state.patient = null;
+        });
 
         // builder.addCase(updatePatientAction.pending, (state, action) => {
         //     state.loading = true;
@@ -43,10 +43,10 @@ export const createPatientAccountdSlice = createSlice({
             state.loading = false;
             state.patient = action.payload.user;
         });
-        // builder.addCase(fetchSinglePatientAction.fulfilled, (state, action) => {
-        //     state.loading = false;
-        //     state.patient = action.payload.patient;
-        // });
+        builder.addCase(fetchSinglePatientAction.fulfilled, (state, action) => {
+            state.loading = false;
+            state.patient = action.payload.patient;
+        });
         // builder.addCase(updatePatientAction.fulfilled, (state, action) => {
         //     state.loading = false;
         // })
@@ -59,10 +59,10 @@ export const createPatientAccountdSlice = createSlice({
             state.loading = false;
             state.patient = null;
         });
-        // builder.addCase(fetchSinglePatientAction.rejected, (state, action) => {
-        //     state.loading = false;
-        //     state.patient = null;
-        // });
+        builder.addCase(fetchSinglePatientAction.rejected, (state, action) => {
+            state.loading = false;
+            state.patient = null;
+        });
         // builder.addCase(updatePatientAction.rejected, (state, action) => {
         //     state.loading = false;
         // })

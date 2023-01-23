@@ -9,6 +9,7 @@ export interface ICreatePatientInputValues {
     lastname:string,
     email: string,
     phone: string,
+    age: number,
     address: string,
     dateOfBirth: string,
     gender: string,

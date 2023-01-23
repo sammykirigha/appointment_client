@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import apiPost from "../../utils/httpRequests";
 import { parseError } from "../../utils/parseError";
-import { ICreatePatientInputData, ICreatePatientReturnedData } from "../models/interfaces";
+import { ICreatePatientInputData, ICreatePatientReturnedData, IGetSinglePatientInputData, IPatientsReturned } from "../models/interfaces";
 import {
   resetNotifications,
   setErrorNotification,
@@ -28,25 +28,25 @@ export const createNewPatientAccountAction = createAsyncThunk(
   }
 );
 
-// export const fetchSinglePatientAction = createAsyncThunk(
-//   "patient/get-one",
-//   async (data, thunkAPI) => {
-//     try {
-//       thunkAPI.dispatch(resetNotifications());
-//       const response = await apiPost(data);
-//       return {
-//         patient: response.data.fetchSinglePatient,
-//         success: true,
-//       };
-//     } catch (err) {
-//       const error = parseError(err);
-//       thunkAPI.dispatch(setErrorNotification(error));
-//       return thunkAPI.rejectWithValue({
-//         success: false,
-//       });
-//     }
-//   }
-// );
+export const fetchSinglePatientAction = createAsyncThunk(
+  "patient/get-one",
+  async (data:IGetSinglePatientInputData, thunkAPI) => {
+    try {
+      thunkAPI.dispatch(resetNotifications({}));
+      const response = await apiPost(data);
+      return {
+        patient: response.data.fetchSinglePatient,
+        success: true,
+      };
+    } catch (err) {
+      const error = parseError(err);
+      thunkAPI.dispatch(setErrorNotification(error));
+      return thunkAPI.rejectWithValue({
+        success: false,
+      });
+    }
+  }
+);
 
 // export const updatePatientAction = createAsyncThunk(
 //   "patient/update-one",

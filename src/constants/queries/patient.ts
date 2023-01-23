@@ -8,6 +8,7 @@ export const CREATE_PATIENT_QUERY = `
     phone
     gender
     address
+    age
     token
     image
     dateOfBirth

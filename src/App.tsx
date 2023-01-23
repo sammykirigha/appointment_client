@@ -9,6 +9,9 @@ import ForgotPassword from "./pages/auth/components/forgot-password";
 import { getCurrentUserAction } from "./store/actions/auth.action";
 import { useAppDispatch } from "./setup/app-hooks";
 import AddPatient from "./pages/patients/components/add_patient";
+import DashboardCards from "./common/dashboardCards";
+import DashboardRoutes from "./setup/routes_manager/DashboardRoutes";
+import PatientDashboard from "./pages/patients/components/dashboard";
 // import { getCurrentUserAction } from "./store/actions/auth.action";
 
 const App = () => {
@@ -60,7 +63,10 @@ const App = () => {
             element={<ResetPassword />}
           />
           <Route path="/home" element={<HomePage />} />
-          <Route path="add-patient" element={<AddPatient />} />
+          <Route path="/add-patient" element={<AddPatient />} />
+          <Route path="/patient" element={<DashboardRoutes />}>
+            <Route path="/patient/dashboard" element={<PatientDashboard />} />
+          </Route>
         </Routes>
       </div>
     </div>

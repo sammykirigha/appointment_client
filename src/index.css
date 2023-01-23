@@ -20,7 +20,7 @@
     }
 
     .button {
-        @apply px-7 py-2 flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-[1.1rem] rounded-full border-[2px] border-white;
+        @apply px-7 py-2 flex items-center gap-2 bg-blue-400 hover:bg-blue-600 text-white text-[1.1rem] rounded-full border-[2px] border-white;
     }
 
     .button--action {

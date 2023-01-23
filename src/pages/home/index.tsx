@@ -27,7 +27,7 @@ const HomePage = (props: Props) => {
         </div>
         <div className=" px-10 flex items-center h-44 gap-5">
           <button
-            onClick={() => navigate("add-patient")}
+            onClick={() => navigate("/add-patient")}
             className="px-5 py-3 flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-[1.1rem] rounded-full border-[2px] border-white"
           >
             Patient Account
