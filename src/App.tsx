@@ -9,10 +9,8 @@ import ForgotPassword from "./pages/auth/components/forgot-password";
 import { getCurrentUserAction } from "./store/actions/auth.action";
 import { useAppDispatch } from "./setup/app-hooks";
 import AddPatient from "./pages/patients/components/add_patient";
-import DashboardCards from "./common/dashboardCards";
 import DashboardRoutes from "./setup/routes_manager/DashboardRoutes";
 import PatientDashboard from "./pages/patients/components/dashboard";
-// import { getCurrentUserAction } from "./store/actions/auth.action";
 
 const App = () => {
   const dispatch = useAppDispatch();

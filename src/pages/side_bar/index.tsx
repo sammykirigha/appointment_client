@@ -6,7 +6,7 @@ import { links } from "../../links";
 import { RiArrowUpSLine, RiArrowDownSLine } from "react-icons/ri";
 import { IoMdArrowDropright } from "react-icons/io";
 import { useAppSelector } from "../../setup/app-hooks";
-import useFetchAllDoctor from "../patients/hooks/useFetchAllDoctors";
+import useFetchDoctor from "../../setup/app-hooks/fetch-doctors/useFetchDoctor";
 
 const Sidebar = () => {
   const { user } = useAppSelector((state) => state.auth);
@@ -17,9 +17,9 @@ const Sidebar = () => {
   const navigate = useNavigate();
   const [isActive, setIsActive] = useState("");
 
-  console.log("<<<<<>>>>", user, doctor, patient);
+  console.log("<<<<<>>>>", user);
 
-  useFetchAllDoctor();
+  useFetchDoctor();
 
   return (
     <div
@@ -98,12 +98,15 @@ const Sidebar = () => {
                             link
                               .toString()
                               .replace("/doctors/:id", `/doctors/${doctor?.id}`)
-                              // .replace('/patients/:id', `/patients/${patient?.id}`)
-                              // .replace('/appointment/:id', `/appointment/${patient.id}`)
                               .replace(
-                                "/doctor-appointment/:id",
-                                `/doctor-appointment/${doctor?.id}`
+                                "/patients/:id",
+                                `/patients/${patient?.id}`
                               )
+                          // .replace('/appointment/:id', `/appointment/${patient.id}`)
+                          // .replace(
+                          //   "/doctor-appointment/:id",
+                          //   `/doctor-appointment/${doctor?.id}`
+                          // )
                         )
                       }
                       className="flex items-center cursor-pointer"

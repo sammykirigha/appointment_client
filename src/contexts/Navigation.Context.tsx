@@ -21,7 +21,6 @@ export const NavigationProvider = (props: Props) => {
     setSideBarOpen(!sideBarOpen);
   };
 
-  //
   return (
     <NavigationContext.Provider value={{ sideBarOpen, toggleSidebar }}>
       {children}

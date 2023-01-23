@@ -7,12 +7,15 @@ const DashboardRoutes = () => {
   const { user } = useAppSelector((state) => state.auth);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const authToken = localStorage.getItem("auth-token");
-  //   if (!authToken && !user?.user_id) {
-  //     navigate("/login");
-  //   }
-  // }, [user?.user_id, navigate]);
+  useEffect(() => {
+    const authToken = localStorage.getItem("auth-token");
+    console.log("====================================");
+    console.log("user", user?.user_id);
+    console.log("====================================");
+    if (!authToken && !user?.user_id) {
+      navigate("/login");
+    }
+  }, [user?.user_id, navigate]);
 
   return (
     <Layout>
