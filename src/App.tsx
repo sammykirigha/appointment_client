@@ -19,6 +19,9 @@ const App = () => {
   useEffect(() => {
     const getUser = async () => {
       const res: any = await dispatch(getCurrentUserAction());
+      console.log("====================================");
+      console.log("response", res);
+      console.log("====================================");
       if (!res.payload.success) navigate("/", { replace: true });
     };
 

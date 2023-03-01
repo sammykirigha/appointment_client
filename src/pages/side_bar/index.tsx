@@ -1,25 +1,28 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { NavigationContext } from "../../contexts/Navigation.Context";
+import {
+  NavigationContext,
+  NavigationContextType,
+} from "../../contexts/Navigation.Context";
 import { Logo } from "../../common";
 import { links } from "../../links";
 import { RiArrowUpSLine, RiArrowDownSLine } from "react-icons/ri";
 import { IoMdArrowDropright } from "react-icons/io";
 import { useAppSelector } from "../../setup/app-hooks";
 import useFetchDoctor from "../../setup/app-hooks/fetch-doctors/useFetchDoctor";
+import useFetchPatient from "../../setup/app-hooks/fetch-patients";
 
 const Sidebar = () => {
   const { user } = useAppSelector((state) => state.auth);
   const { patient } = useAppSelector((state) => state.patient);
   const { doctor } = useAppSelector((state) => state.doctor);
-  const context = useContext(NavigationContext);
+  const context = useContext<NavigationContextType | null>(NavigationContext);
 
   const navigate = useNavigate();
   const [isActive, setIsActive] = useState("");
 
-  console.log("<<<<<>>>>", user);
-
   useFetchDoctor();
+  useFetchPatient();
 
   return (
     <div
@@ -102,11 +105,6 @@ const Sidebar = () => {
                                 "/patients/:id",
                                 `/patients/${patient?.id}`
                               )
-                          // .replace('/appointment/:id', `/appointment/${patient.id}`)
-                          // .replace(
-                          //   "/doctor-appointment/:id",
-                          //   `/doctor-appointment/${doctor?.id}`
-                          // )
                         )
                       }
                       className="flex items-center cursor-pointer"

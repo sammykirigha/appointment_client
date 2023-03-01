@@ -8,7 +8,6 @@
 // import ChatMessages from "../components/others/ChatMessages";
 // import PatientProfileSettings from "../components/others/PatientProfileSettings";
 // import Doctors from "../pages/doctors/Doctors";
-// import PastAppointments from "../pages/patients/appointments/PastAppointments";
 // import PatientAppointments from "../pages/patients/PatientAppointments";
 // import PatientsProfile from "../pages/patients/Patients-Profile";
 // import Calender from "../pages/social/Calendar";
@@ -16,11 +15,12 @@
 // import Chatts from "../pages/social/Chatts";
 // import Email from "../pages/social/Email";
 // import ReadyToChat from "../pages/social/ReadyToChat";
-// import UpcomingAppointmnets from "../pages/patients/appointments/UpcomingAppointmnets";
 // import SingleAppointment from "../pages/SingleAppointment";
 // import Profile from "../pages/patients/Profile";
 import DashboardRoutes from "./DashboardRoutes";
 import PatientDashboard from "../../pages/patients/components/dashboard";
+import UpcomingAppointments from "../../pages/patients/components/appointments/UpcomingAppointments";
+import PastAppointments from "../../pages/patients/components/appointments/PastAppointments";
 
 export const PatientRoutes = [
   {
@@ -29,24 +29,24 @@ export const PatientRoutes = [
     component: DashboardRoutes,
     children: [
       { path: "", component: PatientDashboard },
-      // {
-      //   path: "dashboard",
-      //   exact: true,
-      //   component: PatientDashboard,
-      //   children: [
-      //     { path: "", exact: true, component: UpcomingAppointmnets },
-      //     {
-      //       path: "upcoming-appointments",
-      //       exact: true,
-      //       component: UpcomingAppointmnets,
-      //     },
-      //     {
-      //       path: "past-appointments",
-      //       exact: true,
-      //       component: PastAppointments,
-      //     },
-      //   ],
-      // },
+      {
+        path: "dashboard",
+        exact: true,
+        component: PatientDashboard,
+        children: [
+          { path: "", exact: true, component: UpcomingAppointments },
+          {
+            path: "upcoming-appointments",
+            exact: true,
+            component: UpcomingAppointments,
+          },
+          {
+            path: "past-appointments",
+            exact: true,
+            component: PastAppointments,
+          },
+        ],
+      },
       // {
       //   path: "appointment/:id",
       //   exact: true,

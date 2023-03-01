@@ -13,9 +13,8 @@ export const NavigationContext = createContext<NavigationContextType | null>(
   null
 );
 
-export const NavigationProvider = (props: Props) => {
-  const { children } = props;
-  const [sideBarOpen, setSideBarOpen] = useState(true);
+export const NavigationProvider = ({ children }: Props) => {
+  const [sideBarOpen, setSideBarOpen] = useState<boolean>(false);
 
   const toggleSidebar = () => {
     setSideBarOpen(!sideBarOpen);

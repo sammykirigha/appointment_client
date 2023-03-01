@@ -5,7 +5,7 @@ import "./index.css";
 import App from "./App";
 import { Provider } from "react-redux";
 import { store } from "./store";
-import { NavigationProvider } from "./setup/app-context-manager/navigation-context";
+import { NavigationProvider } from "./contexts/Navigation.Context";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -13,11 +13,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <NavigationProvider>
-        <Provider store={store}>
+      <Provider store={store}>
+        <NavigationProvider>
           <App />
-        </Provider>
-      </NavigationProvider>
+        </NavigationProvider>
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>
 );

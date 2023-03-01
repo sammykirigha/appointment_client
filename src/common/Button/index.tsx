@@ -3,7 +3,7 @@ import { ImSpinner10 } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
 
 interface IButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  text: string;
+  text?: string;
   to?: string;
   isSubmitting?: boolean;
   children?: React.ReactNode;
@@ -24,7 +24,7 @@ const Button = ({
   return (
     <button
       {...props}
-      // onClick={to ===""?onClick: navigate(to)}
+      // onClick={to ===""?onclick: navigate(to)}
       disabled={loading}
       className={`button  ${
         isSubmitting

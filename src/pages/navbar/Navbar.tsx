@@ -26,11 +26,12 @@ type NavbarProps = {
 };
 
 const Navbar = (props: NavbarProps) => {
-  const { onClick } = props;
-
   const context = useContext<NavigationContextType | null>(NavigationContext);
   const { user } = useAppSelector((state) => state.auth);
   const dispatch = useAppDispatch();
+  console.log("====================================");
+  console.log("navbar context", context);
+  console.log("====================================");
 
   return (
     <div

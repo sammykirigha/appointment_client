@@ -13,7 +13,7 @@ const Layout = (props: LayoutProps) => {
   const context = useContext(NavigationContext);
 
   return (
-    <div className="bg-gray-100 ">
+    <div className="bg-gray-100 pt-20">
       <Sidebar />
       <div className=" relative  flex flex-col  min-h-screen">
         <Navbar />

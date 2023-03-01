@@ -9,9 +9,6 @@ const DashboardRoutes = () => {
 
   useEffect(() => {
     const authToken = localStorage.getItem("auth-token");
-    console.log("====================================");
-    console.log("user", user?.user_id);
-    console.log("====================================");
     if (!authToken && !user?.user_id) {
       navigate("/login");
     }
