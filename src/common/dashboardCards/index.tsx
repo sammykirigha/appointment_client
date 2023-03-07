@@ -13,25 +13,25 @@ const iconStyles = {
 const cardsInfo: ICardsInfo[] = [
   {
     icon: <BsFillPersonFill style={iconStyles} />,
-    number: "558",
+    number: 558,
     category: "Todays Patients",
     percentageIncrease: "18% Higher Then Last Month",
   },
   {
     icon: <BsFillFileEarmarkDiffFill style={iconStyles} />,
-    number: "164",
+    number: 164,
     category: "Appointments",
     percentageIncrease: "21% Higher Then Last Month",
   },
   {
     icon: <RiScissorsFill style={iconStyles} />,
-    number: "112",
+    number: 112,
     category: "Today's Operations",
     percentageIncrease: "37% Higher Then Last Month",
   },
   {
     icon: <FaInternetExplorer style={iconStyles} />,
-    number: "16",
+    number: 16,
     category: "Online Appointment",
     percentageIncrease: "10% Higher Then Last Month",
   },

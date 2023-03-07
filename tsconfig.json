@@ -23,7 +23,7 @@
     "useUnknownInCatchVariables": false
   },
   "include": [
-    "src", "types/images.d.ts"
+    "src", "types/images.d.ts", "types"
 , "jest.config.js"  ],
   "exclude": ["node_modules"]
 }

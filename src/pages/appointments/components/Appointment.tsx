@@ -10,6 +10,7 @@ import useFetchDoctor from "../../../setup/app-hooks/fetch-doctors/useFetchDocto
 import useFetchPatient from "../../../setup/app-hooks/fetch-patients";
 import { resetNotifications } from "../../../store/reducers/error.reducer";
 import { Button } from "../../../common";
+import Select from "react-select";
 
 type Props = {
   loading: boolean;
@@ -62,7 +63,6 @@ const Appointment = ({ loading, appointments }: Props) => {
         </div>
         <div className="flex flex-row items-center gap-3">
           <Select
-            on
             options={options}
             value={selectedOption}
             onChange={handleChange}

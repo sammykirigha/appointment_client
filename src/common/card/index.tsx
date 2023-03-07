@@ -1,8 +1,8 @@
 import React from "react";
 
 export interface ICardsInfo {
-  icon: React.ReactNode;
-  number: string;
+  icon?: React.ReactNode;
+  number: number;
   category: string;
   percentageIncrease: string;
 }

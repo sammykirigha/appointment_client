@@ -20,7 +20,6 @@ const Button = ({
   children,
   ...props
 }: IButtonProps) => {
-  const navigate = useNavigate();
   return (
     <button
       {...props}
