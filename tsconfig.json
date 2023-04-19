@@ -18,12 +18,20 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
-    "typeRoots" : ["node_modules/@types", "src/types"],
+    "jsx": "preserve",
+    "typeRoots": [
+      "node_modules/@types",
+      "src/types"
+    ],
     "useUnknownInCatchVariables": false
   },
   "include": [
-    "src", "types/images.d.ts", "types"
-, "jest.config.js"  ],
-  "exclude": ["node_modules"]
+    "src",
+    "types/images.d.ts",
+    "types",
+    "jest.config.js"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

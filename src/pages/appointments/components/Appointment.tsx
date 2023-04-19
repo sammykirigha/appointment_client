@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { RiArrowRightSLine } from "react-icons/ri";
-import AppointmentModal from "../components/modals/AppointmentModal";
 import { FaSpinner } from "react-icons/fa";
 import AppointmentTable from "../components/others/AppointmentTable";
 import { useAppDispatch, useAppSelector } from "../../../setup/app-hooks";
@@ -11,6 +10,7 @@ import useFetchPatient from "../../../setup/app-hooks/fetch-patients";
 import { resetNotifications } from "../../../store/reducers/error.reducer";
 import { Button } from "../../../common";
 import Select from "react-select";
+import AppointmentModal from "../../../common/modals/AppointmentModal";
 
 type Props = {
   loading: boolean;

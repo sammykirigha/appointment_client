@@ -9,15 +9,21 @@ import { PageNavigation, Pagination } from "../pagenation/Pagination";
 
 //add a filter method to filter data using names
 
+type Props = {
+  data: any;
+  showAction: boolean;
+  showPagination: boolean;
+};
+
 const AppointmentTable = ({
   data,
   showAction = true,
   showPagination = true,
-}) => {
+}: Props) => {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(5);
-  const closeModalRef = useRef(null);
+  const closeModalRef = useRef<HTMLInputElement>(null);
 
   const previousPage = () => {
     setCurrentPage(currentPage - 1);
@@ -29,7 +35,7 @@ const AppointmentTable = ({
 
   const myData = new Pagination(data, itemsPerPage);
 
-  const changeItemsPerPage = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const changeItemsPerPage = (e: { target: { value: any } }) => {
     const num = e.target.value;
     setItemsPerPage(+num);
   };
@@ -38,7 +44,7 @@ const AppointmentTable = ({
 
   const handleClose = () => {
     if (closeModalRef.current) {
-      closeModalRef.current.click();
+      closeModalRef.current?.click();
     }
   };
 
