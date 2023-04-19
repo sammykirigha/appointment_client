@@ -45,7 +45,7 @@ const ForgotPassword = () => {
   };
 
   const SignUpSchema = Yup.object().shape({
-    email: Yup.string().email("invalid email").required("Email cant be empty"),
+    email: Yup.string().email("invalid email").required("Email can't be empty"),
   });
 
   return (
