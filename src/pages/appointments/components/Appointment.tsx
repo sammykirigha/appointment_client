@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { RiArrowRightSLine } from "react-icons/ri";
 import { FaSpinner } from "react-icons/fa";
-import AppointmentTable from "../components/others/AppointmentTable";
 import { useAppDispatch, useAppSelector } from "../../../setup/app-hooks";
 import useFetchDoctor from "../../../setup/app-hooks/fetch-doctors/useFetchDoctor";
 import useFetchPatient from "../../../setup/app-hooks/fetch-patients";
@@ -11,10 +10,11 @@ import { resetNotifications } from "../../../store/reducers/error.reducer";
 import { Button } from "../../../common";
 import Select from "react-select";
 import AppointmentModal from "../../../common/modals/AppointmentModal";
+import AppointmentTable from "../../../common/appointments/AppointmentsTable";
 
 type Props = {
   loading: boolean;
-  appointments: any;
+  appointments?: any;
 };
 
 const Appointment = ({ loading, appointments }: Props) => {
@@ -79,7 +79,7 @@ const Appointment = ({ loading, appointments }: Props) => {
           <FaSpinner className="h-24 w-24 text-blue-600 animate-spin" />
         </div>
       ) : appointments?.length > 0 ? (
-        <AppointmentTable data={appointments} />
+        <AppointmentTable data={appointments} showAction={false} showPagination={false} />
       ) : (
         <div className="flex items-center justify-center">
           <div className="bg-white border h-auto  rounded-md flex items-center justify-center w-auto py-3 sm:w-auto sm:py-auto md:w-[500px] lg:w-[500px] mx-autho">

@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../setup/app-hooks";
 import useFetchPatient from "../../../../setup/app-hooks/fetch-patients";
 import { resetNotifications } from "../../../../store/reducers/error.reducer";
-import Appointment from "../Appointment";
+import Appointment from "../../../appointments/components/Appointment";
+
 
 const PatientAppointments = () => {
   const { patient, loading } = useAppSelector((state) => state.patient);
@@ -11,10 +12,18 @@ const PatientAppointments = () => {
   useFetchPatient();
 
   useEffect(() => {
-    return () => dispatch(resetNotifications());
+
+
+    return () => {
+      dispatch(resetNotifications({}));
+    }
+
   }, [dispatch]);
 
-  return <Appointment appointments={patient?.appointments} loading={loading} />;
+  return <Appointment
+    // appointments={patient?.appointments} 
+    loading={loading}
+  />;
 };
 
 export default PatientAppointments;
