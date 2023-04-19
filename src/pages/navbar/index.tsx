@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import logo from "../../assets/images/logo.jpg";
 import { MdOutlineLogout } from "react-icons/md";
+import { Logo } from "../../common";
 
 type Props = {};
 
@@ -28,24 +29,7 @@ const Navbar = (props: Props) => {
         colorChange ? "bg-white" : ""
       } flex-row fixed items-center justify-between top-0 left-0 w-full z-20`}
     >
-      <div className="mt-10 flex gap-0">
-        <div className="h-24 w-24 ml-10">
-          <img
-            src={logo}
-            alt="logo"
-            height="50%"
-            width="50%"
-            className="cursor-pointer rounded-full m-0"
-          />
-        </div>
-        <h1
-          className={`text-[1.3rem] -ml-9 mt-4 p-0 ${
-            colorChange ? "text-blue-700" : "text-white"
-          } font-bold cursor-pointer`}
-        >
-          DOCTRIS .
-        </h1>
-      </div>
+      <Logo colorChange={colorChange} />
       <div className="ml-auto mr-10">
         <ul className="flex items-center cursor-pointer">
           <li

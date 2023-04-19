@@ -34,6 +34,7 @@ const AddPatient = () => {
       address: myValues.address,
       dateOfBirth: myValues.dateOfBirth,
       gender: myValues.gender,
+      age: parseInt(myValues.age),
       bloodGroup: myValues.bloodGroup,
       county: myValues.county,
       nationality: myValues.nationality,
@@ -50,6 +51,7 @@ const AddPatient = () => {
     };
 
     const res: any = await dispatch(createNewPatientAccountAction(details));
+    
     if (res.payload.success) {
       navigate("/patient", { replace: true });
     }
@@ -87,6 +89,7 @@ const AddPatient = () => {
                 email: "",
                 phone: "",
                 image: "",
+                age: 0,
                 address: "",
                 county: "",
                 bloodGroup: "",
@@ -225,6 +228,16 @@ const AddPatient = () => {
                         options={maritalStatusOptions}
                       />
                     </div>
+                  </div>
+                  <div className="flex flex-col gap-10 sm:flex-col md:flex-row sm:items-start md:items-center justify-between ml-3 mb-5  lg:gap-5">
+                    <CreateInput
+                      customStyles="!w-[50%]"
+                      name="age"
+                      value={values.age}
+                      type="number"
+                      label="Age:"
+                      placeholder="age:"
+                    />
                   </div>
                   <div className=" ml-3 ">
                     <Button

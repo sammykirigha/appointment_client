@@ -27,24 +27,24 @@ import {IDoctorsReturned} from "../models/interfaces"
 //   }
 // );
 
-// export const getDoctorAction = createAsyncThunk(
-//   "doctors/get",
-//   async (data, thunkAPI) => {
-//     try {
-//       thunkAPI.dispatch(resetNotifications());
-//       const response = await apiPost(data);
-//       return {
-//         doctor: response.data.getOneDoctor,
-//         success: true,
-//       };
-//     } catch (err) {
-//       thunkAPI.dispatch(setErrorNotification(err));
-//       return thunkAPI.rejectWithValue({
-//         success: false,
-//       });
-//     }
-//   }
-// );
+export const getDoctorAction = createAsyncThunk(
+  "doctors/get",
+  async (data: any, thunkAPI) => {
+    try {
+      thunkAPI.dispatch(resetNotifications({}));
+      const response = await apiPost(data);
+      return {
+        doctor: response.data.getOneDoctor,
+        success: true,
+      };
+    } catch (err) {
+      thunkAPI.dispatch(setErrorNotification(err));
+      return thunkAPI.rejectWithValue({
+        success: false,
+      });
+    }
+  }
+);
 
 // export const updateDoctorAction = createAsyncThunk(
 //   "doctors/update",
@@ -95,7 +95,7 @@ export const getAllDoctorsAction = createAsyncThunk(
       thunkAPI.dispatch(resetNotifications({}));
       const response = await apiPost({ query: FETCH_ALL_DOCTORS_QUERY });
       return {
-        doctors: response.data.getDoctors as IDoctorsReturned,
+        doctors: response.data.getDoctors as IDoctorsReturned[],
         success: true,
       };
     } catch (err) {

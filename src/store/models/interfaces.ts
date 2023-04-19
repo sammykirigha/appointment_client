@@ -1,5 +1,5 @@
 export interface IAuthenticatedUserReturnedData {
-    id: string,
+    user_id: string,
     username: string,
     email: string,
     role: string
@@ -54,6 +54,25 @@ export interface IAppointments {
     description: string;
   }
 
+  export interface IPatientsReturned {
+    id:string;
+    firstname:string;
+    lastname:string;
+    email:string;
+    phone:string;
+    gender:string;
+    address:string;
+    token:string;
+    image:string;
+    dateOfBirth:string;
+    disability:string;
+    county:string;
+    bloodGroup:string;
+    nationality:string;
+    maritalStatus:string;
+    appointments: IAppointments
+  }
+
 export interface IDoctorsReturned {
     id: string;
     firstname: string;
@@ -101,5 +120,17 @@ export interface ICreatePatientInputData{
         input: ICreatePatientReturnedData;
     };
 }
+
+interface GetSinglePatient{
+    id: string
+}
+
+export interface IGetSinglePatientInputData{
+    query: string;
+    variables: {
+        input: GetSinglePatient;
+    };
+}
+
 
 

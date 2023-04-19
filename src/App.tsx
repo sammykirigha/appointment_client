@@ -9,7 +9,8 @@ import ForgotPassword from "./pages/auth/components/forgot-password";
 import { getCurrentUserAction } from "./store/actions/auth.action";
 import { useAppDispatch } from "./setup/app-hooks";
 import AddPatient from "./pages/patients/components/add_patient";
-// import { getCurrentUserAction } from "./store/actions/auth.action";
+import DashboardRoutes from "./setup/routes_manager/DashboardRoutes";
+import PatientDashboard from "./pages/patients/components/dashboard";
 
 const App = () => {
   const dispatch = useAppDispatch();
@@ -18,6 +19,9 @@ const App = () => {
   useEffect(() => {
     const getUser = async () => {
       const res: any = await dispatch(getCurrentUserAction());
+      console.log("====================================");
+      console.log("response", res);
+      console.log("====================================");
       if (!res.payload.success) navigate("/", { replace: true });
     };
 
@@ -60,7 +64,10 @@ const App = () => {
             element={<ResetPassword />}
           />
           <Route path="/home" element={<HomePage />} />
-          <Route path="add-patient" element={<AddPatient />} />
+          <Route path="/add-patient" element={<AddPatient />} />
+          <Route path="/patient" element={<DashboardRoutes />}>
+            <Route path="/patient/dashboard" element={<PatientDashboard />} />
+          </Route>
         </Routes>
       </div>
     </div>

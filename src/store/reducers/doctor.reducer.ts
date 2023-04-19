@@ -1,88 +1,96 @@
 import { createSlice } from "@reduxjs/toolkit";
-// import { changePasswordAction, createDoctorAction, getAllDoctorsdAction, getDoctorAction, updateDoctorAction } from "../actions/doctors.action";
+import {  getAllDoctorsAction, getDoctorAction } from "../actions/doctors.action";
+import { IDoctorsReturned } from "../models/interfaces";
 
-// const initialState = {
-//     doctors: [],
-//     doctor: null,
-//     loading: false,
-// };
+interface IDoctorsReducerInitialstate {
+    doctors: IDoctorsReturned[],
+    doctor: IDoctorsReturned | null,
+    loading: boolean,
+}
 
-// export const authSlice = createSlice({
-//     name: "doctor",
-//     initialState,
-//     extraReducers: (builder) => { 
-//         //builders
-//         builder.addCase(createDoctorAction.pending, (state, action) => {
-//             state.loading = true;
-//         });
+const initialState:IDoctorsReducerInitialstate = {
+    doctors: [],
+    doctor: null,
+    loading: false,
+};
 
-//         builder.addCase(getDoctorAction.pending, (state, action) => {
-//             state.loading = true;
-//         });
+export const authSlice = createSlice({
+    name: "doctor",
+    initialState,
+    reducers: {},
+    extraReducers: (builder) => { 
+        //builders
+        // builder.addCase(createDoctorAction.pending, (state, action) => {
+        //     state.loading = true;
+        // });
 
-//          builder.addCase(changePasswordAction.pending, (state, action) => {
-//             state.loading = true;
-//          });
+        builder.addCase(getDoctorAction.pending, (state, action) => {
+            state.loading = true;
+        });
+
+        //  builder.addCase(changePasswordAction.pending, (state, action) => {
+        //     state.loading = true;
+        //  });
         
-//         builder.addCase(updateDoctorAction.pending, (state, action) => {
-//             state.loading = true;
-//         });
+        // builder.addCase(updateDoctorAction.pending, (state, action) => {
+        //     state.loading = true;
+        // });
         
-//          builder.addCase(getAllDoctorsdAction.pending, (state, action) => {
-//          state.loading = true;
-//          });
+         builder.addCase(getAllDoctorsAction.pending, (state, action) => {
+         state.loading = true;
+         });
 
-//         //fullfilled
-//         builder.addCase(createDoctorAction.fulfilled, (state, action) => {
-//             state.loading = false;
-//             state.doctor = action.payload.doctor;
-//         });
+        //fullfilled
+        // builder.addCase(createDoctorAction.fulfilled, (state, action) => {
+        //     state.loading = false;
+        //     state.doctor = action.payload.doctor;
+        // });
 
-//         builder.addCase(getDoctorAction.fulfilled, (state, action) => {
-//             state.loading = false;
-//             state.doctor = action.payload.doctor;
-//         });
+        builder.addCase(getDoctorAction.fulfilled, (state, action) => {
+            state.loading = false;
+            state.doctor = action.payload.doctor;
+        });
 
-//          builder.addCase(updateDoctorAction.fulfilled, (state, action) => {
-//             state.loading = false;
-//          });
+        //  builder.addCase(updateDoctorAction.fulfilled, (state, action) => {
+        //     state.loading = false;
+        //  });
         
-//         builder.addCase(changePasswordAction.fulfilled, (state, action) => {
-//             state.loading = false;
-//         });
+        // builder.addCase(changePasswordAction.fulfilled, (state, action) => {
+        //     state.loading = false;
+        // });
         
-//          builder.addCase(getAllDoctorsdAction.fulfilled, (state, action) => {
-//              state.loading = false;
-//              state.doctors = action.payload.doctors
-//          });
+         builder.addCase(getAllDoctorsAction.fulfilled, (state, action) => {
+             state.loading = false;
+             state.doctors = action.payload.doctors
+         });
 
 
-//         //rejected
-//         builder.addCase(createDoctorAction.rejected, (state, action) => {
-//             state.loading = false;
-//             state.doctor = null;
-//         });
+        //rejected
+        // builder.addCase(createDoctorAction.rejected, (state, action) => {
+        //     state.loading = false;
+        //     state.doctor = null;
+        // });
 
-//         builder.addCase(getDoctorAction.rejected, (state, action) => {
-//             state.loading = false;
-//             state.doctor = null;
-//         });
+        builder.addCase(getDoctorAction.rejected, (state, action) => {
+            state.loading = false;
+            state.doctor = null;
+        });
 
-//         builder.addCase(updateDoctorAction.rejected, (state, action) => {
-//             state.loading = false;
-//         });
+        // builder.addCase(updateDoctorAction.rejected, (state, action) => {
+        //     state.loading = false;
+        // });
 
-//         builder.addCase(changePasswordAction.rejected, (state, action) => {
-//             state.loading = false;
-//         });
+        // builder.addCase(changePasswordAction.rejected, (state, action) => {
+        //     state.loading = false;
+        // });
         
-//          builder.addCase(getAllDoctorsdAction.rejected, (state, action) => {
-//              state.loading = false;
-//          });
+         builder.addCase(getAllDoctorsAction.rejected, (state, action) => {
+             state.loading = false;
+         });
 
-//     },
-// });
+    },
+});
 
-// const { reducer } = authSlice;
+const { reducer } = authSlice;
 
-// export default reducer;
+export default reducer;

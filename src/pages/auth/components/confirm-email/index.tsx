@@ -43,12 +43,12 @@ export const ConfirmEmail = () => {
     setIsSubmitting(true);
     if (res.payload.success) {
       setIsSubmitting(false);
-      navigate("/login");
+      navigate("/");
     }
 
     if (!res.payload.success) {
       setIsSubmitting(false);
-      navigate("/");
+      navigate("/*");
     }
   };
 
