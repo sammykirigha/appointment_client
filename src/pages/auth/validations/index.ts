@@ -7,7 +7,7 @@ export const SignUpSchema = Yup.object().shape({
 
 export  const PasswordSchema = Yup.object().shape({
     password: Yup.string()
-      .required("Password cant be empty")
+      .required("Password can't be empty")
       .test("len", "Very weak", (val) => val!.length > 5)
       .test("len", "Weak", (val) => val!.length > 8),
   });
